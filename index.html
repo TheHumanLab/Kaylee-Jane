@@ -1,0 +1,1576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kaylee-Jane — Structural Intelligence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Cormorant:ital,wght@0,300;0,400;1,300;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+
+/* ============================================
+   ROOT & RESET
+   ============================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg-deep:       #2C2C2C;
+  --bg-warm:       #3A3634;
+  --bg-lighter:    #424040;
+  --text-primary:  #EDE8DC;
+  --text-body:     #C2C0B6;
+  --text-muted:    #8A8880;
+  --gold:          #BAA36C;
+  --gold-light:    #D4BF8E;
+  --gold-dim:      #7A6B47;
+  --border:        rgba(186,163,108,0.15);
+  --border-light:  rgba(194,192,182,0.12);
+  --grid-line:     rgba(194,192,182,0.06);
+
+  --font-display:  'Cormorant Garamond', Georgia, serif;
+  --font-serif:    'Cormorant', Georgia, serif;
+  --font-body:     'Libre Baskerville', Georgia, serif;
+  --font-mono:     'Montserrat', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--bg-deep);
+  color: var(--text-body);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.75;
+  overflow-x: hidden;
+  cursor: default;
+}
+
+/* ============================================
+   GRID BACKGROUND TEXTURE
+   ============================================ */
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 80px 80px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ============================================
+   NAVIGATION
+   ============================================ */
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 28px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(to bottom, rgba(44,44,44,0.95) 0%, rgba(44,44,44,0) 100%);
+}
+
+.nav-logo {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.nav-logo span {
+  color: var(--gold);
+}
+
+.nav-links {
+  display: flex;
+  gap: 48px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  color: var(--text-muted);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--gold);
+}
+
+/* ============================================
+   SECTION BASE
+   ============================================ */
+
+section {
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================
+   HERO
+   ============================================ */
+
+#hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 0;
+  overflow: hidden;
+}
+
+.hero-left {
+  padding: 140px 80px 100px 80px;
+  position: relative;
+}
+
+.hero-meta {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.25em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 60px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.hero-meta::before {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: var(--gold-dim);
+}
+
+.hero-display {
+  font-family: var(--font-display);
+  font-size: clamp(3.8rem, 5.5vw, 6.2rem);
+  font-weight: 300;
+  line-height: 1.05;
+  color: var(--text-primary);
+  margin-bottom: 0;
+  letter-spacing: -0.01em;
+}
+
+.hero-display em {
+  font-style: italic;
+  color: var(--gold);
+  font-weight: 300;
+}
+
+.hero-display .line-break {
+  display: block;
+}
+
+.hero-tagline {
+  margin-top: 48px;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border-left: 1px solid var(--gold-dim);
+  padding-left: 20px;
+}
+
+.hero-tagline strong {
+  color: var(--gold);
+  font-weight: 500;
+}
+
+.hero-cta-row {
+  margin-top: 64px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.btn-primary {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--bg-deep);
+  background: var(--gold);
+  padding: 14px 32px;
+  text-decoration: none;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: var(--gold-light);
+}
+
+.btn-ghost {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+  border-bottom: 1px solid var(--gold-dim);
+  padding-bottom: 2px;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-ghost:hover {
+  color: var(--gold);
+  border-color: var(--gold);
+}
+
+.hero-right {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.hero-image-block {
+  position: absolute;
+  inset: 0;
+  background: var(--bg-warm);
+}
+
+.hero-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    var(--bg-deep) 0%,
+    rgba(44,44,44,0.3) 40%,
+    transparent 100%
+  );
+  z-index: 2;
+}
+
+.hero-image-content {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-abstract {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+/* Architectural abstract lines — pure CSS */
+.hero-abstract::before {
+  content: '';
+  position: absolute;
+  top: 15%;
+  left: 10%;
+  right: 10%;
+  bottom: 15%;
+  border: 1px solid rgba(186,163,108,0.12);
+}
+
+.hero-abstract::after {
+  content: '';
+  position: absolute;
+  top: 25%;
+  left: 20%;
+  right: 5%;
+  bottom: 25%;
+  border-left: 1px solid rgba(186,163,108,0.08);
+  border-top: 1px solid rgba(186,163,108,0.08);
+}
+
+.hero-coords {
+  position: absolute;
+  bottom: 48px;
+  right: 48px;
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  color: var(--text-muted);
+  text-align: right;
+  z-index: 3;
+  line-height: 2;
+}
+
+.hero-coords span {
+  display: block;
+}
+
+.hero-coords .coord-gold {
+  color: var(--gold-dim);
+}
+
+.hero-scroll-hint {
+  position: absolute;
+  bottom: 48px;
+  left: 80px;
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 3;
+}
+
+.hero-scroll-hint::after {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--gold-dim), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+/* ============================================
+   SECTION: PHILOSOPHY
+   ============================================ */
+
+#philosophy {
+  padding: 160px 80px;
+  background: var(--bg-deep);
+}
+
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.3em;
+  color: var(--gold-dim);
+  text-transform: uppercase;
+  margin-bottom: 80px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.section-label::after {
+  content: '';
+  display: block;
+  flex: 1;
+  max-width: 80px;
+  height: 1px;
+  background: var(--gold-dim);
+}
+
+.philosophy-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 120px;
+  align-items: start;
+}
+
+.philosophy-left h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 4vw, 4.5rem);
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.philosophy-left h2 em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.philosophy-right {
+  padding-top: 12px;
+}
+
+.philosophy-right p {
+  font-size: 1.05rem;
+  line-height: 1.9;
+  color: var(--text-body);
+  margin-bottom: 28px;
+}
+
+.philosophy-right p:last-child {
+  margin-bottom: 0;
+}
+
+.philosophy-pull {
+  margin-top: 60px;
+  padding: 40px 0 40px 36px;
+  border-left: 1px solid var(--gold);
+}
+
+.philosophy-pull p {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+.philosophy-pull cite {
+  display: block;
+  margin-top: 16px;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: var(--gold-dim);
+  text-transform: uppercase;
+  font-style: normal;
+}
+
+/* ============================================
+   SECTION: THE HUMAN LAB
+   ============================================ */
+
+#the-human-lab {
+  padding: 160px 80px;
+  background: var(--bg-warm);
+  position: relative;
+  overflow: hidden;
+}
+
+#the-human-lab::before {
+  content: 'THE HUMAN LAB';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-display);
+  font-size: clamp(6rem, 12vw, 14rem);
+  font-weight: 300;
+  color: rgba(186,163,108,0.04);
+  white-space: nowrap;
+  pointer-events: none;
+  letter-spacing: 0.1em;
+}
+
+.lab-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 100px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.lab-left {
+  position: relative;
+}
+
+.lab-number {
+  font-family: var(--font-display);
+  font-size: 8rem;
+  font-weight: 300;
+  color: rgba(186,163,108,0.12);
+  line-height: 1;
+  position: absolute;
+  top: -40px;
+  left: -20px;
+}
+
+.lab-left h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 3.5vw, 3.8rem);
+  font-weight: 300;
+  line-height: 1.15;
+  color: var(--text-primary);
+  position: relative;
+  z-index: 1;
+}
+
+.lab-left h2 em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.lab-left .lab-url {
+  display: inline-block;
+  margin-top: 40px;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  text-decoration: none;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--gold-dim);
+  padding-bottom: 3px;
+  transition: color 0.3s, border-color 0.3s;
+}
+
+.lab-left .lab-url:hover {
+  color: var(--gold-light);
+  border-color: var(--gold-light);
+}
+
+.lab-right p {
+  font-size: 1.05rem;
+  line-height: 1.9;
+  color: var(--text-body);
+  margin-bottom: 28px;
+}
+
+.lab-pillars {
+  margin-top: 48px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+}
+
+.lab-pillar {
+  background: rgba(44,44,44,0.6);
+  padding: 24px 28px;
+  border-top: 1px solid var(--border);
+}
+
+.lab-pillar-num {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  color: var(--gold-dim);
+  margin-bottom: 10px;
+}
+
+.lab-pillar-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.lab-pillar-desc {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ============================================
+   SECTION: FRAMEWORKS
+   ============================================ */
+
+#frameworks {
+  padding: 160px 80px;
+  background: var(--bg-deep);
+}
+
+.frameworks-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  margin-bottom: 100px;
+  align-items: end;
+}
+
+.frameworks-header h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 3.5vw, 4rem);
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--text-primary);
+}
+
+.frameworks-header h2 em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.frameworks-header p {
+  font-size: 0.95rem;
+  line-height: 1.85;
+  color: var(--text-body);
+}
+
+.frameworks-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+
+.framework-item {
+  background: var(--bg-warm);
+  padding: 48px 40px;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.4s ease;
+}
+
+.framework-item:hover {
+  background: var(--bg-lighter);
+}
+
+.framework-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 0;
+  background: var(--gold);
+  transition: height 0.4s ease;
+}
+
+.framework-item:hover::before {
+  height: 100%;
+}
+
+.framework-num {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.25em;
+  color: var(--gold-dim);
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.framework-num::after {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 1px;
+  background: var(--gold-dim);
+}
+
+.framework-name {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--text-primary);
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.framework-trademark {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.framework-desc {
+  font-size: 0.875rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+}
+
+/* ============================================
+   SECTION: BOOKS
+   ============================================ */
+
+#books {
+  padding: 160px 80px;
+  background: var(--bg-warm);
+  position: relative;
+  overflow: hidden;
+}
+
+.books-header {
+  margin-bottom: 100px;
+}
+
+.books-header h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 3.5vw, 4rem);
+  font-weight: 300;
+  color: var(--text-primary);
+  line-height: 1.1;
+}
+
+.books-header h2 em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.books-header p {
+  margin-top: 24px;
+  font-size: 0.95rem;
+  color: var(--text-body);
+  max-width: 480px;
+  line-height: 1.8;
+}
+
+.books-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  align-items: start;
+}
+
+.book-card {
+  position: relative;
+}
+
+.book-card-inner {
+  background: var(--bg-deep);
+  padding: 48px 40px;
+  border-top: 1px solid var(--border);
+  transition: border-color 0.3s ease;
+}
+
+.book-card:hover .book-card-inner {
+  border-top-color: var(--gold);
+}
+
+.book-series-tag {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.25em;
+  color: var(--gold-dim);
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+
+.book-title {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: var(--text-primary);
+  line-height: 1.15;
+  margin-bottom: 12px;
+}
+
+.book-subtitle {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--gold);
+  line-height: 1.4;
+  margin-bottom: 28px;
+}
+
+.book-desc {
+  font-size: 0.875rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+  margin-bottom: 36px;
+}
+
+.book-status {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  display: inline-block;
+}
+
+.book-status.available {
+  color: var(--gold);
+  border: 1px solid var(--gold-dim);
+}
+
+.book-status.coming {
+  color: var(--text-muted);
+  border: 1px solid rgba(138,136,128,0.3);
+}
+
+.book-buy-link {
+  display: inline-block;
+  margin-top: 20px;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--bg-deep);
+  background: var(--gold);
+  padding: 12px 24px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.book-buy-link:hover {
+  background: var(--gold-light);
+}
+
+/* ============================================
+   SECTION: ABOUT / BIO
+   ============================================ */
+
+#about {
+  padding: 160px 80px;
+  background: var(--bg-deep);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 120px;
+  align-items: start;
+}
+
+.about-left {
+  position: sticky;
+  top: 120px;
+}
+
+.about-name {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 4vw, 4.5rem);
+  font-weight: 300;
+  color: var(--text-primary);
+  line-height: 1.05;
+  margin-bottom: 24px;
+}
+
+.about-name em {
+  display: block;
+  font-style: italic;
+  color: var(--gold);
+}
+
+.about-role {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  line-height: 2;
+}
+
+.about-divider {
+  width: 40px;
+  height: 1px;
+  background: var(--gold-dim);
+  margin: 32px 0;
+}
+
+.about-tagline {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-style: italic;
+  color: var(--gold);
+  line-height: 1.5;
+}
+
+.about-right p {
+  font-size: 1.05rem;
+  line-height: 1.95;
+  color: var(--text-body);
+  margin-bottom: 32px;
+}
+
+.about-right p:last-of-type {
+  margin-bottom: 0;
+}
+
+.about-credentials {
+  margin-top: 64px;
+  padding-top: 48px;
+  border-top: 1px solid var(--border-light);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.credential {
+  padding: 28px;
+  background: var(--bg-warm);
+  border-left: 1px solid var(--gold-dim);
+}
+
+.credential-label {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  color: var(--gold-dim);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.credential-value {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+/* ============================================
+   SECTION: CONTACT
+   ============================================ */
+
+#contact {
+  padding: 140px 80px;
+  background: var(--bg-warm);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+#contact::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 80px;
+  background: linear-gradient(to bottom, transparent, var(--gold-dim));
+}
+
+.contact-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  color: var(--gold-dim);
+  text-transform: uppercase;
+  margin-bottom: 40px;
+  margin-top: 20px;
+}
+
+#contact h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 4vw, 4.5rem);
+  font-weight: 300;
+  color: var(--text-primary);
+  line-height: 1.1;
+  margin-bottom: 24px;
+}
+
+#contact h2 em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+#contact p {
+  font-size: 1rem;
+  color: var(--text-body);
+  max-width: 480px;
+  margin: 0 auto 56px;
+  line-height: 1.8;
+}
+
+.contact-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+}
+
+.contact-link {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 3px;
+  transition: color 0.3s, border-color 0.3s;
+}
+
+.contact-link:hover {
+  color: var(--gold);
+  border-color: var(--gold);
+}
+
+.contact-link.primary {
+  color: var(--gold);
+  border-color: var(--gold-dim);
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+footer {
+  padding: 40px 80px;
+  background: var(--bg-deep);
+  border-top: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-left {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+}
+
+.footer-left span {
+  color: var(--gold-dim);
+}
+
+.footer-right {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+}
+
+/* ============================================
+   SCROLL ANIMATIONS
+   ============================================ */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+
+/* ============================================
+   HERO ENTRANCE ANIMATIONS
+   ============================================ */
+
+.hero-animate {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: heroEntrance 1s ease forwards;
+}
+
+.hero-animate-1 { animation-delay: 0.3s; }
+.hero-animate-2 { animation-delay: 0.6s; }
+.hero-animate-3 { animation-delay: 0.9s; }
+.hero-animate-4 { animation-delay: 1.2s; }
+
+@keyframes heroEntrance {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   CUSTOM CURSOR
+   ============================================ */
+
+.cursor {
+  width: 6px;
+  height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.15s ease;
+  mix-blend-mode: screen;
+}
+
+.cursor-follower {
+  width: 28px;
+  height: 28px;
+  border: 1px solid rgba(186,163,108,0.4);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  transition: transform 0.4s ease, width 0.3s ease, height 0.3s ease;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 1024px) {
+  nav { padding: 24px 40px; }
+  .nav-links { gap: 32px; }
+
+  #hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-left { padding: 140px 40px 80px; }
+  .hero-right { height: 50vw; }
+
+  #philosophy { padding: 100px 40px; }
+  .philosophy-grid { grid-template-columns: 1fr; gap: 60px; }
+
+  #the-human-lab { padding: 100px 40px; }
+  .lab-grid { grid-template-columns: 1fr; gap: 60px; }
+
+  #frameworks { padding: 100px 40px; }
+  .frameworks-header { grid-template-columns: 1fr; gap: 32px; }
+  .frameworks-list { grid-template-columns: 1fr 1fr; }
+
+  #books { padding: 100px 40px; }
+  .books-grid { grid-template-columns: 1fr 1fr; }
+
+  #about { padding: 100px 40px; }
+  .about-grid { grid-template-columns: 1fr; gap: 60px; }
+  .about-left { position: static; }
+
+  #contact { padding: 100px 40px; }
+  footer { padding: 32px 40px; }
+}
+
+@media (max-width: 640px) {
+  .nav-links { display: none; }
+  .hero-left { padding: 120px 24px 60px; }
+  #philosophy, #the-human-lab, #frameworks, #books, #about, #contact { padding: 80px 24px; }
+  .frameworks-list { grid-template-columns: 1fr; }
+  .books-grid { grid-template-columns: 1fr; }
+  .about-credentials { grid-template-columns: 1fr; }
+  footer { padding: 28px 24px; flex-direction: column; gap: 12px; text-align: center; }
+  .contact-links { flex-direction: column; gap: 24px; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- Custom cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-follower" id="cursorFollower"></div>
+
+<!-- ============================================
+     NAVIGATION
+     ============================================ -->
+<nav>
+  <a href="#hero" class="nav-logo">Kaylee-Jane <span>·</span> Structural Intelligence</a>
+  <ul class="nav-links">
+    <li><a href="#philosophy">Philosophy</a></li>
+    <li><a href="#the-human-lab">The Human Lab</a></li>
+    <li><a href="#frameworks">Frameworks</a></li>
+    <li><a href="#books">Books</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ============================================
+     HERO
+     ============================================ -->
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-meta hero-animate hero-animate-1">
+      Structural Intelligence · Cognitive Architecture
+    </div>
+
+    <h1 class="hero-display hero-animate hero-animate-2">
+      <span class="line-break">I don't quiet</span>
+      <span class="line-break">dysfunction.</span>
+      <span class="line-break"><em>I diagnose it.</em></span>
+    </h1>
+
+    <div class="hero-tagline hero-animate hero-animate-3">
+      <strong>Kaylee-Jane</strong> · Founder, The Human Lab
+    </div>
+
+    <div class="hero-cta-row hero-animate hero-animate-4">
+      <a href="#the-human-lab" class="btn-primary">Enter The Lab</a>
+      <a href="#books" class="btn-ghost">Read The Work</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-image-block">
+      <div class="hero-image-content">
+        <div class="hero-abstract"></div>
+      </div>
+      <div class="hero-image-overlay"></div>
+    </div>
+    <div class="hero-coords">
+      <span class="coord-gold">STRUCTURAL INTELLIGENCE</span>
+      <span>LAYER 01 · IDENTITY</span>
+      <span>DEPTH · 9 LAYERS</span>
+      <span>THE HUMAN LAB™</span>
+    </div>
+  </div>
+
+  <div class="hero-scroll-hint">Scroll</div>
+</section>
+
+<!-- ============================================
+     PHILOSOPHY
+     ============================================ -->
+<section id="philosophy">
+  <div class="section-label reveal">01 · Philosophy</div>
+
+  <div class="philosophy-grid">
+    <div class="philosophy-left reveal reveal-delay-1">
+      <h2>
+        Behaviour is not<br>
+        a mystery.<br>
+        It is a <em>structure.</em>
+      </h2>
+
+      <div class="philosophy-pull">
+        <p>"Most people were never taught to read the architecture running their life. That is the only thing that needed to change."</p>
+        <cite>— Kaylee-Jane</cite>
+      </div>
+    </div>
+
+    <div class="philosophy-right reveal reveal-delay-2">
+      <p>The world has spent decades telling people their struggles are personal failures. That if they cannot stay consistent, they must lack discipline. That if they feel stuck, they must not want it badly enough. That if they keep repeating patterns, something must be broken inside them.</p>
+
+      <p>My work begins from a different position entirely. Behaviour is not random and it is not mysterious. It is structural. Every pattern you repeat, every loop you cannot exit, every gap between knowing and doing — these are not character defects. They are structural outputs. Systems running as designed, in conditions that were never examined.</p>
+
+      <p>I work at the level most practitioners never reach: the internal architecture beneath the behaviour. Not what someone does, but what structure produces it. Not what they believe, but what logic is operating underneath. This is diagnostic work in the truest sense — precise, rigorous, and structural from the first question to the final insight.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     THE HUMAN LAB
+     ============================================ -->
+<section id="the-human-lab">
+  <div class="section-label reveal">02 · The Human Lab</div>
+
+  <div class="lab-grid">
+    <div class="lab-left reveal reveal-delay-1">
+      <div class="lab-number">02</div>
+      <h2>
+        The research<br>engine behind<br>
+        <em>Structural<br>Intelligence.</em>
+      </h2>
+      <a href="https://humanlabofficial.com" target="_blank" class="lab-url">
+        humanlabofficial.com →
+      </a>
+    </div>
+
+    <div class="lab-right reveal reveal-delay-2">
+      <p>The Human Lab is a premium diagnostic and consulting practice built around one core belief: that the internal architecture of a person — the structural logic governing how they think, behave, decide, and imagine themselves — can be read, mapped, and adjusted with precision.</p>
+
+      <p>This is not coaching. It is not therapy. It is structural diagnostic work for people who are intelligent enough to know something is off, rigorous enough to want a real answer, and ready for an explanation that goes deeper than mindset or habit.</p>
+
+      <div class="lab-pillars">
+        <div class="lab-pillar">
+          <div class="lab-pillar-num">01</div>
+          <div class="lab-pillar-title">Diagnose</div>
+          <div class="lab-pillar-desc">Read the structure beneath the behaviour</div>
+        </div>
+        <div class="lab-pillar">
+          <div class="lab-pillar-num">02</div>
+          <div class="lab-pillar-title">Map</div>
+          <div class="lab-pillar-desc">Identify the architecture producing the pattern</div>
+        </div>
+        <div class="lab-pillar">
+          <div class="lab-pillar-num">03</div>
+          <div class="lab-pillar-title">Adjust</div>
+          <div class="lab-pillar-desc">Redesign from the correct level</div>
+        </div>
+        <div class="lab-pillar">
+          <div class="lab-pillar-num">04</div>
+          <div class="lab-pillar-title">Stabilise</div>
+          <div class="lab-pillar-desc">Build conditions that hold without force</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     FRAMEWORKS
+     ============================================ -->
+<section id="frameworks">
+  <div class="section-label reveal">03 · Proprietary Frameworks</div>
+
+  <div class="frameworks-header">
+    <h2 class="reveal reveal-delay-1">
+      Instruments built<br>for <em>structural<br>precision.</em>
+    </h2>
+    <p class="reveal reveal-delay-2">Each framework was developed through years of diagnostic work. These are not borrowed methodologies or adapted models. They are original instruments — built to read what other tools cannot reach.</p>
+  </div>
+
+  <div class="frameworks-list">
+
+    <div class="framework-item reveal reveal-delay-1">
+      <div class="framework-num">01</div>
+      <div class="framework-name">Structural Intelligence Diagnostic</div>
+      <div class="framework-trademark">SID™ · 9 Structural Layers</div>
+      <p class="framework-desc">An 85-question diagnostic instrument mapping a person's internal architecture across nine structural layers. The SID produces a detailed report revealing the logic governing behaviour, decision-making, and self-perception at the structural level.</p>
+    </div>
+
+    <div class="framework-item reveal reveal-delay-2">
+      <div class="framework-num">02</div>
+      <div class="framework-name">Applied Cognitive Instruments</div>
+      <div class="framework-trademark">ACI™ · Diagnostic Suite</div>
+      <p class="framework-desc">A suite of precision diagnostic tools including Heavy™, Decision Density™, Cognitive Recalibration™, and the Personal Operating System™. Each instrument isolates a specific structural variable and produces actionable intelligence.</p>
+    </div>
+
+    <div class="framework-item reveal reveal-delay-3">
+      <div class="framework-num">03</div>
+      <div class="framework-name">Organisational Friction &amp; Authority Audit</div>
+      <div class="framework-trademark">OFAA™ · Structural Audit</div>
+      <p class="framework-desc">A structural audit instrument for organisations and individuals — mapping where authority is misaligned, where friction is structural rather than personal, and where the architecture of a system is producing the dysfunction being blamed on people.</p>
+    </div>
+
+    <div class="framework-item reveal reveal-delay-1">
+      <div class="framework-num">04</div>
+      <div class="framework-name">Structural Resilience Blueprint</div>
+      <div class="framework-trademark">SRB™ · Resilience Architecture</div>
+      <p class="framework-desc">A diagnostic framework for mapping the structural conditions that produce or erode resilience. Goes beyond coping strategies to identify what the architecture of a person's life is demanding, and what it is failing to return.</p>
+    </div>
+
+    <div class="framework-item reveal reveal-delay-2">
+      <div class="framework-num">05</div>
+      <div class="framework-name">Authority Mapping Protocol</div>
+      <div class="framework-trademark">AMP™ · Power Architecture</div>
+      <p class="framework-desc">A precision instrument for reading the authority architecture of an individual or organisation — where real decision-making power lives, where it is being blocked, and how structural misalignment between title and authority produces systemic dysfunction.</p>
+    </div>
+
+    <div class="framework-item reveal reveal-delay-3">
+      <div class="framework-num">06</div>
+      <div class="framework-name">Governance Design Manual</div>
+      <div class="framework-trademark">GDM™ · Structural Governance</div>
+      <p class="framework-desc">A framework for designing governance structures that function as intended — mapping where informal power, structural ambiguity, and undefined accountability are producing the failures that formal structure was meant to prevent.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================
+     BOOKS
+     ============================================ -->
+<section id="books">
+  <div class="section-label reveal">04 · The Pivot Series</div>
+
+  <div class="books-header reveal reveal-delay-1">
+    <h2>
+      Written for people who<br>
+      are <em>done being told<br>
+      to try harder.</em>
+    </h2>
+    <p>A three-part series that dismantles the myth of personal failure and replaces it with structural understanding. Each book stands alone. Together they form a complete diagnostic education.</p>
+  </div>
+
+  <div class="books-grid">
+
+    <div class="book-card reveal reveal-delay-1">
+      <div class="book-card-inner">
+        <div class="book-series-tag">The Pivot Series · Book One</div>
+        <div class="book-title">You Are Not<br>The Problem</div>
+        <div class="book-subtitle">The Real Reason Willpower Always Runs Out</div>
+        <p class="book-desc">The invisible structures shaping your behaviour have never been explained to you. This book changes that. Not a motivation book. Not a discipline manual. A structural diagnosis of why effort alone has never been enough — and what actually is.</p>
+        <span class="book-status available">Available Now</span>
+        <br>
+        <a href="https://humanlabofficial.com" target="_blank" class="book-buy-link">Get The Book →</a>
+      </div>
+    </div>
+
+    <div class="book-card reveal reveal-delay-2">
+      <div class="book-card-inner">
+        <div class="book-series-tag">The Pivot Series · Book Two</div>
+        <div class="book-title">Coming<br>Soon</div>
+        <div class="book-subtitle">The next book in The Pivot Series</div>
+        <p class="book-desc">The structural work continues. Book Two moves from diagnosis to design — the principles for building conditions that make the right behaviour the natural one.</p>
+        <span class="book-status coming">In Development</span>
+      </div>
+    </div>
+
+    <div class="book-card reveal reveal-delay-3">
+      <div class="book-card-inner">
+        <div class="book-series-tag">The Pivot Series · Book Three</div>
+        <div class="book-title">Coming<br>Soon</div>
+        <div class="book-subtitle">The final book in The Pivot Series</div>
+        <p class="book-desc">The complete structural intelligence framework — applied. Book Three is the synthesis: the full architecture of a life designed from the correct level.</p>
+        <span class="book-status coming">In Development</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================
+     ABOUT
+     ============================================ -->
+<section id="about">
+  <div class="section-label reveal">05 · About</div>
+
+  <div class="about-grid">
+    <div class="about-left reveal reveal-delay-1">
+      <div class="about-name">
+        Kaylee-<em>Jane</em>
+      </div>
+      <div class="about-role">
+        Founder · The Human Lab<br>
+        Structural Intelligence Practitioner<br>
+        Author · The Pivot Series
+      </div>
+      <div class="about-divider"></div>
+      <div class="about-tagline">
+        "I don't quiet<br>dysfunction.<br>I diagnose it."
+      </div>
+    </div>
+
+    <div class="about-right reveal reveal-delay-2">
+      <p>I am a structural intelligence practitioner, diagnostic instrument designer, and author. My work centres on a single discipline: reading the internal architecture that produces behaviour — the structural logic operating beneath personality, habit, and effort that most practitioners never reach.</p>
+
+      <p>I built The Human Lab because I kept seeing the same pattern everywhere: intelligent, capable people in genuine pain, not because they were broken, but because nobody had ever shown them the structure they were operating inside. They had been given techniques. Tools. Frameworks borrowed from other disciplines. What they had never been given was an accurate diagnosis.</p>
+
+      <p>My frameworks — the Structural Intelligence Diagnostic, the Applied Cognitive Instruments, the OFAA™ — are original instruments developed through years of diagnostic work. They are not adapted from existing models. They are designed from the ground up to do one thing: read what other tools cannot reach.</p>
+
+      <p>I work with individuals who are sophisticated enough to know that mindset advice will not touch their actual problem, and rigorous enough to want something that will. The work is precise, structural, and — for the right person — quietly transformative.</p>
+
+      <div class="about-credentials">
+        <div class="credential">
+          <div class="credential-label">Practice</div>
+          <div class="credential-value">The Human Lab</div>
+        </div>
+        <div class="credential">
+          <div class="credential-label">Methodology</div>
+          <div class="credential-value">Structural Intelligence</div>
+        </div>
+        <div class="credential">
+          <div class="credential-label">Instruments</div>
+          <div class="credential-value">6 Proprietary Frameworks</div>
+        </div>
+        <div class="credential">
+          <div class="credential-label">Publications</div>
+          <div class="credential-value">The Pivot Series</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     CONTACT
+     ============================================ -->
+<section id="contact">
+  <div class="contact-eyebrow reveal">06 · Contact</div>
+
+  <h2 class="reveal reveal-delay-1">
+    Work that begins<br>
+    with the right <em>diagnosis.</em>
+  </h2>
+
+  <p class="reveal reveal-delay-2">If you are ready to understand the structure — not manage the symptoms — I would like to hear from you.</p>
+
+  <div class="contact-links reveal reveal-delay-3">
+    <a href="https://humanlabofficial.com" target="_blank" class="contact-link primary">The Human Lab</a>
+    <a href="mailto:hello@kaylee-jane.com" class="contact-link">hello@kaylee-jane.com</a>
+    <a href="https://humanlabofficial.com" target="_blank" class="contact-link">Diagnostic Instruments</a>
+  </div>
+</section>
+
+<!-- ============================================
+     FOOTER
+     ============================================ -->
+<footer>
+  <div class="footer-left">
+    © 2026 <span>Kaylee-Jane</span> · All rights reserved · <span>The Human Lab™</span>
+  </div>
+  <div class="footer-right">
+    Structural Intelligence · The Pivot Series
+  </div>
+</footer>
+
+<!-- ============================================
+     JAVASCRIPT
+     ============================================ -->
+<script>
+
+// Custom cursor
+const cursor = document.getElementById('cursor');
+const follower = document.getElementById('cursorFollower');
+let mouseX = 0, mouseY = 0;
+let followerX = 0, followerY = 0;
+
+document.addEventListener('mousemove', e => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+  cursor.style.left = mouseX - 3 + 'px';
+  cursor.style.top  = mouseY - 3 + 'px';
+});
+
+function animateFollower() {
+  followerX += (mouseX - followerX - 14) * 0.1;
+  followerY += (mouseY - followerY - 14) * 0.1;
+  follower.style.left = followerX + 'px';
+  follower.style.top  = followerY + 'px';
+  requestAnimationFrame(animateFollower);
+}
+animateFollower();
+
+// Hover effect on links
+document.querySelectorAll('a, button, .framework-item, .book-card').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    cursor.style.transform = 'scale(2)';
+    follower.style.width = '48px';
+    follower.style.height = '48px';
+  });
+  el.addEventListener('mouseleave', () => {
+    cursor.style.transform = 'scale(1)';
+    follower.style.width = '28px';
+    follower.style.height = '28px';
+  });
+});
+
+// Scroll reveal
+const revealElements = document.querySelectorAll('.reveal');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, {
+  threshold: 0.12,
+  rootMargin: '0px 0px -60px 0px'
+});
+
+revealElements.forEach(el => observer.observe(el));
+
+// Active nav link on scroll
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+
+const navObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(link => {
+        link.style.color = '';
+        if (link.getAttribute('href') === '#' + entry.target.id) {
+          link.style.color = 'var(--gold)';
+        }
+      });
+    }
+  });
+}, { threshold: 0.4 });
+
+sections.forEach(s => navObserver.observe(s));
+
+</script>
+</body>
+</html>

@@ -1,4 +1,5 @@
-<section id="product-architecture">
+<section id="hero">
+  <section id="product-architecture">
 
   <div class="section-label">
     Product Architecture
@@ -8,7 +9,7 @@
 
     <div class="pa-left">
       <h2>
-        I build products from
+        I build products from<br>
         <em>fragmented ideas.</em>
       </h2>
     </div>
@@ -56,6 +57,10 @@
   </div>
 
 </section>
+/* ============================================
+   PRODUCT ARCHITECTURE
+   ============================================ */
+
 #product-architecture {
   padding: 160px 80px;
   background: var(--bg-deep);
@@ -65,6 +70,7 @@
   display: grid;
   grid-template-columns: 1fr 1.2fr;
   gap: 120px;
+  align-items: start;
 }
 
 .pa-left h2 {
@@ -84,6 +90,7 @@
   font-size: 1rem;
   line-height: 1.9;
   margin-bottom: 24px;
+  color: var(--text-body);
 }
 
 .pa-block {
@@ -101,10 +108,20 @@
   font-size: 0.55rem;
   letter-spacing: 0.2em;
   color: var(--gold-dim);
+  display: block;
+  margin-bottom: 6px;
 }
 
 .pa-item p {
-  margin-top: 6px;
   font-size: 0.9rem;
   color: var(--text-muted);
+  margin: 0;
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+  .pa-grid {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
 }

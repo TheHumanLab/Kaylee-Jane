@@ -173,12 +173,19 @@ body {
 .section::before {
   content: attr(data-number);
   position: absolute;
-  top: 20px;
+
+  top: 80px;        /* push down slightly */
   right: 40px;
-  font-size: 140px;
+
+  font-size: 160px;
   font-family: var(--font-display);
-  color: rgba(255,255,255,0.03);
+
+  color: rgba(255,255,255,0.04);
+
   pointer-events: none;
+
+  z-index: 0;       /* sits behind content */
+}
 }
 </style>
 </head>

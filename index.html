@@ -1,5 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kaylee-Jane — Structural Intelligence</title>
+
+<style>
+:root {
+  --bg-deep: #2C2C2C;
+  --bg-warm: #3A3634;
+  --text-primary: #EDE8DC;
+  --text-body: #C2C0B6;
+  --text-muted: #8A8880;
+  --gold: #BAA36C;
+  --gold-dim: #7A6B47;
+  --border: rgba(186,163,108,0.15);
+
+  --font-display: Georgia, serif;
+  --font-body: Arial, sans-serif;
+  --font-mono: Arial, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg-deep);
+  color: var(--text-body);
+  font-family: var(--font-body);
+}
+
+/* HERO */
+#hero {
+  padding: 140px 80px;
+}
+
+.hero-title {
+  font-size: 3rem;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.hero-title em {
+  color: var(--gold);
+}
+
+.hero-sub {
+  margin-top: 20px;
+  color: var(--text-muted);
+}
+
+/* PRODUCT ARCHITECTURE */
+#product-architecture {
+  padding: 120px 80px;
+}
+
+.section-label {
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: var(--gold-dim);
+  margin-bottom: 40px;
+  text-transform: uppercase;
+}
+
+.pa-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 80px;
+}
+
+.pa-left h2 {
+  font-size: 2.5rem;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.pa-left em {
+  color: var(--gold);
+}
+
+.pa-right p {
+  margin-bottom: 20px;
+  line-height: 1.7;
+}
+
+.pa-block {
+  margin: 30px 0;
+  border-top: 1px solid var(--border);
+}
+
+.pa-item {
+  padding: 15px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.pa-item span {
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--gold-dim);
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 20px;
+  background: var(--gold);
+  color: black;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-size: 12px;
+}
+
+/* MOBILE */
+@media (max-width: 800px) {
+  .pa-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
 <section id="hero">
-  <section id="product-architecture">
+  <h1 class="hero-title">
+    I don't quiet dysfunction.<br>
+    <em>I diagnose it.</em>
+  </h1>
+
+  <p class="hero-sub">
+    Kaylee-Jane · Structural Intelligence
+  </p>
+</section>
+
+<!-- PRODUCT ARCHITECTURE -->
+<section id="product-architecture">
 
   <div class="section-label">
     Product Architecture
@@ -48,80 +186,13 @@
 
       </div>
 
-      <a href="#contact" class="btn-primary">
-        Build With Me
-      </a>
+      <a href="#" class="btn">Build With Me</a>
 
     </div>
 
   </div>
 
 </section>
-/* ============================================
-   PRODUCT ARCHITECTURE
-   ============================================ */
 
-#product-architecture {
-  padding: 160px 80px;
-  background: var(--bg-deep);
-}
-
-.pa-grid {
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 120px;
-  align-items: start;
-}
-
-.pa-left h2 {
-  font-family: var(--font-display);
-  font-size: clamp(2.5rem, 4vw, 4rem);
-  font-weight: 300;
-  color: var(--text-primary);
-  line-height: 1.1;
-}
-
-.pa-left em {
-  color: var(--gold);
-  font-style: italic;
-}
-
-.pa-right p {
-  font-size: 1rem;
-  line-height: 1.9;
-  margin-bottom: 24px;
-  color: var(--text-body);
-}
-
-.pa-block {
-  margin: 40px 0;
-  border-top: 1px solid var(--border);
-}
-
-.pa-item {
-  padding: 20px 0;
-  border-bottom: 1px solid var(--border);
-}
-
-.pa-item span {
-  font-family: var(--font-mono);
-  font-size: 0.55rem;
-  letter-spacing: 0.2em;
-  color: var(--gold-dim);
-  display: block;
-  margin-bottom: 6px;
-}
-
-.pa-item p {
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  margin: 0;
-}
-
-/* MOBILE */
-@media (max-width: 900px) {
-  .pa-grid {
-    grid-template-columns: 1fr;
-    gap: 60px;
-  }
-}
+</body>
+</html>

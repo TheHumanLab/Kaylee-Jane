@@ -11,7 +11,7 @@
   --text: #E8E6E1;
   --muted: #9B988F;
   --accent: #C2A96A;
-  --border: rgba(255,255,255,0.08);
+  --border: rgba(255,255,255,0.06);
 
   --font-display: Georgia, serif;
   --font-body: "Segoe UI", Arial, sans-serif;
@@ -140,13 +140,26 @@ body {
 
 body {
   background:
-    linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)),
+    linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)),
+
     repeating-linear-gradient(
       to right,
-      rgba(255,255,255,0.02) 0px,
-      rgba(255,255,255,0.02) 1px,
+      rgba(255,255,255,0.06),
+      rgba(255,255,255,0.06) 1px,
       transparent 1px,
       transparent 80px
+    ),
+
+    repeating-linear-gradient(
+      to bottom,
+      rgba(255,255,255,0.03),
+      rgba(255,255,255,0.03) 1px,
+      transparent 1px,
+      transparent 80px
+    ),
+
+    var(--bg);
+}
     ),
     var(--bg);
 }
@@ -249,21 +262,29 @@ body {
 
   <div class="label">Contact</div>
 
-  <h2 style="
-    font-family: var(--font-display);
-    font-size: 1.6rem;
-    margin-bottom: 10px;
-  ">
-    If something is unclear,<br>
-    <em style="color: var(--accent);">that’s where I work best.</em>
-  </h2>
+  <section class="section" data-number="03" style="background: rgba(255,255,255,0.03);">
 
-  <p style="max-width:700px; color:var(--muted); margin-bottom:30px;">
-    Send context, not polish. I work with what is undefined, complex, or structurally unresolved.
-  </p>
+  <div style="max-width:700px; padding-left:40px;"> <!-- ADD THIS WRAPPER -->
 
-  <a href="mailto:hello@kaylee-jane.com" class="btn">
-    Contact
-  </a>
+    <div class="label">Contact</div>
+
+    <h2 style="
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+    ">
+      If something is unclear,<br>
+      <em style="color: var(--accent);">that’s where I work best.</em>
+    </h2>
+
+    <p style="color:var(--muted); margin-bottom:30px;">
+      Send context, not polish. I work with what is undefined, complex, or structurally unresolved.
+    </p>
+
+    <a href="mailto:hello@kaylee-jane.com" class="btn">
+      Contact
+    </a>
+
+  </div>
 
 </section>

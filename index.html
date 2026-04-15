@@ -7,18 +7,15 @@
 
 <style>
 :root {
-  --bg-deep: #2C2C2C;
-  --bg-warm: #3A3634;
-  --text-primary: #EDE8DC;
-  --text-body: #C2C0B6;
-  --text-muted: #8A8880;
-  --gold: #BAA36C;
-  --gold-dim: #7A6B47;
-  --border: rgba(186,163,108,0.15);
+  --bg: #1F1F1F;
+  --panel: #2A2A2A;
+  --text: #E8E6E1;
+  --muted: #9B988F;
+  --accent: #C2A96A;
+  --border: rgba(255,255,255,0.08);
 
   --font-display: Georgia, serif;
-  --font-body: Arial, sans-serif;
-  --font-mono: Arial, sans-serif;
+  --font-body: "Segoe UI", Arial, sans-serif;
 }
 
 * {
@@ -28,94 +25,144 @@
 }
 
 body {
-  background: var(--bg-deep);
-  color: var(--text-body);
+  background: var(--bg);
+  color: var(--text);
   font-family: var(--font-body);
 }
 
+/* CONTAINER */
+.wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
 /* HERO */
-#hero {
-  padding: 140px 80px;
+.hero {
+  padding: 140px 0 100px;
 }
 
-.hero-title {
-  font-size: 3rem;
-  color: var(--text-primary);
-  line-height: 1.2;
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 5vw, 4rem);
+  font-weight: 400;
+  line-height: 1.15;
 }
 
-.hero-title em {
-  color: var(--gold);
+.hero em {
+  color: var(--accent);
+  font-style: italic;
 }
 
-.hero-sub {
-  margin-top: 20px;
-  color: var(--text-muted);
+.hero p {
+  margin-top: 24px;
+  color: var(--muted);
+  max-width: 600px;
 }
 
-/* PRODUCT ARCHITECTURE */
-#product-architecture {
-  padding: 120px 80px;
+/* SECTION */
+.section {
+  padding: 100px 0;
+  border-top: 1px solid var(--border);
 }
 
-.section-label {
-  font-size: 12px;
+.label {
+  font-size: 11px;
   letter-spacing: 2px;
-  color: var(--gold-dim);
-  margin-bottom: 40px;
   text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 40px;
 }
 
-.pa-grid {
+/* GRID */
+.grid {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
   gap: 80px;
 }
 
-.pa-left h2 {
-  font-size: 2.5rem;
-  color: var(--text-primary);
+/* LEFT */
+.grid-left h2 {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 400;
   line-height: 1.2;
 }
 
-.pa-left em {
-  color: var(--gold);
+.grid-left em {
+  color: var(--accent);
 }
 
-.pa-right p {
-  margin-bottom: 20px;
+/* RIGHT */
+.grid-right p {
+  margin-bottom: 18px;
   line-height: 1.7;
+  color: var(--muted);
 }
 
-.pa-block {
-  margin: 30px 0;
+/* PROCESS BLOCK */
+.block {
+  margin-top: 30px;
   border-top: 1px solid var(--border);
 }
 
-.pa-item {
-  padding: 15px 0;
+.item {
+  padding: 18px 0;
   border-bottom: 1px solid var(--border);
 }
 
-.pa-item span {
-  font-size: 11px;
+.item span {
+  font-size: 10px;
   letter-spacing: 2px;
-  color: var(--gold-dim);
+  color: var(--accent);
 }
 
+.item p {
+  margin-top: 6px;
+  font-size: 0.9rem;
+}
+
+/* BUTTON */
 .btn {
   display: inline-block;
-  margin-top: 20px;
-  background: var(--gold);
-  color: black;
+  margin-top: 25px;
   padding: 10px 20px;
+  background: var(--accent);
+  color: #000;
   text-decoration: none;
   font-size: 12px;
 }
 
+/* SERVICES */
+.services {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.card {
+  border: 1px solid var(--border);
+  padding: 24px;
+}
+
+.card h3 {
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
 /* MOBILE */
-@media (max-width: 800px) {
-  .pa-grid {
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .services {
     grid-template-columns: 1fr;
   }
 }
@@ -124,38 +171,37 @@ body {
 
 <body>
 
+<div class="wrap">
+
 <!-- HERO -->
-<section id="hero">
-  <h1 class="hero-title">
-    I don't quiet dysfunction.<br>
-    <em>I diagnose it.</em>
+<section class="hero">
+  <h1>
+    I don't simplify complexity.<br>
+    <em>I structure it.</em>
   </h1>
 
-  <p class="hero-sub">
-    Kaylee-Jane · Structural Intelligence
+  <p>
+    Kaylee-Jane — Structural Intelligence.<br>
+    I work with individuals and organisations to translate complex, fragmented thinking into clear, functional systems.
   </p>
 </section>
 
 <!-- PRODUCT ARCHITECTURE -->
-<section id="product-architecture">
+<section class="section">
 
-  <div class="section-label">
-    Product Architecture
-  </div>
+  <div class="label">Product Architecture</div>
 
-  <div class="pa-grid">
+  <div class="grid">
 
-    <div class="pa-left">
+    <div class="grid-left">
       <h2>
         I build products from<br>
         <em>fragmented ideas.</em>
       </h2>
     </div>
 
-    <div class="pa-right">
-      <p>
-        Most people don’t lack ideas. They lack structure.
-      </p>
+    <div class="grid-right">
+      <p>Most people don’t lack ideas. They lack structure.</p>
 
       <p>
         I take what is undefined, scattered, or conceptually dense —
@@ -167,19 +213,19 @@ body {
         into something that can exist commercially.
       </p>
 
-      <div class="pa-block">
+      <div class="block">
 
-        <div class="pa-item">
+        <div class="item">
           <span>INPUT</span>
           <p>Unclear idea, concept, or internal framework</p>
         </div>
 
-        <div class="pa-item">
+        <div class="item">
           <span>PROCESS</span>
           <p>Structural decoding, positioning, system design</p>
         </div>
 
-        <div class="pa-item">
+        <div class="item">
           <span>OUTPUT</span>
           <p>Defined product, offering, or intellectual asset</p>
         </div>
@@ -193,6 +239,34 @@ body {
   </div>
 
 </section>
+
+<!-- SERVICES -->
+<section class="section">
+
+  <div class="label">Services</div>
+
+  <div class="services">
+
+    <div class="card">
+      <h3>Product Structuring</h3>
+      <p>Transform undefined ideas into structured, positioned products.</p>
+    </div>
+
+    <div class="card">
+      <h3>Identity & Positioning</h3>
+      <p>Define what you do clearly so others can understand and engage.</p>
+    </div>
+
+    <div class="card">
+      <h3>System Architecture</h3>
+      <p>Design internal frameworks that organise thinking and execution.</p>
+    </div>
+
+  </div>
+
+</section>
+
+</div>
 
 </body>
 </html>

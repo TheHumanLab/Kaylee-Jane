@@ -126,6 +126,37 @@ body {
     grid-template-columns: 1fr;
   }
 }
+  /* ===== DEPTH LAYER ===== */
+
+body {
+  background:
+    linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)),
+    repeating-linear-gradient(
+      to right,
+      rgba(255,255,255,0.02) 0px,
+      rgba(255,255,255,0.02) 1px,
+      transparent 1px,
+      transparent 80px
+    ),
+    var(--bg);
+}
+
+/* SECTION SEPARATION */
+.section {
+  position: relative;
+}
+
+/* FAINT NUMBER BACKGROUND */
+.section::before {
+  content: attr(data-number);
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  font-size: 140px;
+  font-family: var(--font-display);
+  color: rgba(255,255,255,0.03);
+  pointer-events: none;
+}
 </style>
 </head>
 

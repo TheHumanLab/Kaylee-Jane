@@ -8,7 +8,6 @@
 <style>
 :root {
   --bg: #1F1F1F;
-  --panel: #2A2A2A;
   --text: #E8E6E1;
   --muted: #9B988F;
   --accent: #C2A96A;
@@ -30,14 +29,12 @@ body {
   font-family: var(--font-body);
 }
 
-/* CONTAINER */
 .wrap {
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 24px;
 }
 
-/* HERO */
 .hero {
   padding: 140px 0 100px;
 }
@@ -45,13 +42,11 @@ body {
 .hero h1 {
   font-family: var(--font-display);
   font-size: clamp(2.8rem, 5vw, 4rem);
-  font-weight: 400;
   line-height: 1.15;
 }
 
 .hero em {
   color: var(--accent);
-  font-style: italic;
 }
 
 .hero p {
@@ -60,7 +55,6 @@ body {
   max-width: 600px;
 }
 
-/* SECTION */
 .section {
   padding: 100px 0;
   border-top: 1px solid var(--border);
@@ -74,18 +68,15 @@ body {
   margin-bottom: 40px;
 }
 
-/* GRID */
 .grid {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
   gap: 80px;
 }
 
-/* LEFT */
 .grid-left h2 {
   font-family: var(--font-display);
   font-size: 2.2rem;
-  font-weight: 400;
   line-height: 1.2;
 }
 
@@ -93,14 +84,12 @@ body {
   color: var(--accent);
 }
 
-/* RIGHT */
 .grid-right p {
   margin-bottom: 18px;
   line-height: 1.7;
   color: var(--muted);
 }
 
-/* PROCESS BLOCK */
 .block {
   margin-top: 30px;
   border-top: 1px solid var(--border);
@@ -122,7 +111,6 @@ body {
   font-size: 0.9rem;
 }
 
-/* BUTTON */
 .btn {
   display: inline-block;
   margin-top: 25px;
@@ -133,36 +121,8 @@ body {
   font-size: 12px;
 }
 
-/* SERVICES */
-.services {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  margin-top: 40px;
-}
-
-.card {
-  border: 1px solid var(--border);
-  padding: 24px;
-}
-
-.card h3 {
-  font-size: 1rem;
-  margin-bottom: 10px;
-}
-
-.card p {
-  font-size: 0.9rem;
-  color: var(--muted);
-}
-
-/* MOBILE */
 @media (max-width: 900px) {
   .grid {
-    grid-template-columns: 1fr;
-  }
-
-  .services {
     grid-template-columns: 1fr;
   }
 }
@@ -186,7 +146,7 @@ body {
   </p>
 </section>
 
-<!-- PRODUCT ARCHITECTURE -->
+<!-- PRODUCT -->
 <section class="section">
 
   <div class="label">Product Architecture</div>
@@ -194,51 +154,27 @@ body {
   <div class="grid">
 
     <div class="grid-left">
-      <h2>
-        I build products from<br>
-        <em>fragmented ideas.</em>
-      </h2>
+      <h2>I build systems & products from<br><em>fragmented ideas.</em></h2>
     </div>
 
     <div class="grid-right">
       <p>Most people don’t lack ideas. They lack structure.</p>
-
-      <p>
-        I take what is undefined, scattered, or conceptually dense —
-        and translate it into clear, positioned, productised systems.
-      </p>
-
-      <p>
-        This includes naming, structuring, packaging, and aligning your work
-        into something that can exist commercially.
-      </p>
+      <p>I translate undefined, scattered thinking into clear,  positioned systems.</p>
 
       <div class="block">
-
-        <div class="item">
-          <span>INPUT</span>
-          <p>Unclear idea, concept, or internal framework</p>
-        </div>
-
-        <div class="item">
-          <span>PROCESS</span>
-          <p>Structural decoding, positioning, system design</p>
-        </div>
-
-        <div class="item">
-          <span>OUTPUT</span>
-          <p>Defined product, offering, or intellectual asset</p>
-        </div>
-
+        <div class="item"><span>INPUT</span><p>Unclear idea or framework</p></div>
+        <div class="item"><span>PROCESS</span><p>Structural decoding & positioning</p></div>
+        <div class="item"><span>OUTPUT</span><p>Defined product or system</p></div>
       </div>
 
-      <a href="#" class="btn">Build With Me</a>
-
+      <a href="mailto:your@email.com" class="btn">Build With Me</a>
     </div>
 
   </div>
 
 </section>
+
+<!-- ORGANISATIONAL -->
 <section class="section">
 
   <div class="label">Organisational Systems</div>
@@ -246,67 +182,37 @@ body {
   <div class="grid">
 
     <div class="grid-left">
-      <h2>
-        I audit and redesign<br>
-        <em>how organisations actually function.</em>
-      </h2>
+      <h2>I audit and redesign<br><em>how organisations function.</em></h2>
     </div>
 
     <div class="grid-right">
-
-      <p>
-        Most organisational problems are not people problems.
-        They are structural failures misidentified as behavioural ones.
-      </p>
-
-      <p>
-        I work at system level — diagnosing breakdowns in authority,
-        decision-making, role design, and operational flow.
-      </p>
-
-      <p>
-        This includes full organisational audits, structural diagnostics,
-        and implementation of intelligence systems designed to stabilise
-        and optimise performance.
-      </p>
+      <p>Most organisational problems are structural, not behavioural.</p>
 
       <div class="block">
-
-        <div class="item">
-          <span>DIAGNOSTIC</span>
-          <p>Identify structural failures across leadership, roles, and systems</p>
-        </div>
-
-        <div class="item">
-          <span>INTERVENTION</span>
-          <p>Redesign governance, decision-making, and execution structures</p>
-        </div>
-
-        <div class="item">
-          <span>IMPLEMENTATION</span>
-          <p>Deploy operational systems and intelligence frameworks</p>
-        </div>
-
+        <div class="item"><span>DIAGNOSTIC</span><p>Identify structural failures</p></div>
+        <div class="item"><span>INTERVENTION</span><p>Redesign systems</p></div>
+        <div class="item"><span>IMPLEMENTATION</span><p>Deploy frameworks</p></div>
       </div>
 
       <a href="https://payhip.com/thehumanlab/organizational" target="_blank" class="btn">
-        View Organisational Systems
+        View Systems
       </a>
-
     </div>
 
   </div>
 
 </section>
-<!-- SERVICES -->
+
+<!-- CONTACT -->
 <section class="section">
 
-  <div class="label">Services</div>
+  <div class="label">Contact</div>
 
-  <div class="services">
+  <p style="max-width:600px; color:var(--muted); margin-bottom:20px;">
+    If you are working with something complex or undefined, contact me directly with context.
+  </p>
 
-
-  </div>
+  <a href="mailto:your@email.com" class="btn">Contact</a>
 
 </section>
 
@@ -314,17 +220,3 @@ body {
 
 </body>
 </html>
-<section class="section">
-
-  <div class="label">Contact</div>
-
-  <p style="max-width:600px; color:var(--muted); margin-bottom:20px;">
-    If you are working with something complex, undefined, or structurally unclear,
-    you can contact me directly with context.
-  </p>
-
-  <a href="mailto:your@email.com" class="btn">
-    Contact
-  </a>
-
-</section>
